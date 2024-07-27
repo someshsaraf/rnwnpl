@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Stream and URL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+        .panel {
+            flex: 1;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .panel iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="panel">
+            <div id="youtube-live"></div>
+        </div>
+        <div class="panel">
+            <iframe src="https://badminton.double-yellow.be/live?fullscreen=true&eventContains=NPL&layoutBig=G&bgImageBig=1"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function onYouTubeIframeAPIReady() {
+            new YT.Player('youtube-live', {
+                height: '100%',
+                width: '100%',
+                videoId: 'GOYDh-5z1ks', // Replace YOUR_VIDEO_ID with the actual video ID of the YouTube live stream
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.playVideo();
+        }
+    </script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>
